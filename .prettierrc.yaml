@@ -1,0 +1,17 @@
+singleQuote: true
+semi: true
+printWidth: 100
+trailingComma: es5
+arrowParens: always
+bracketSameLine: false
+bracketSpacing: true
+embeddedLanguageFormatting: auto
+htmlWhitespaceSensitivity: css
+insertPragma: false
+jsxSingleQuote: false
+proseWrap: preserve
+quoteProps: as-needed
+requirePragma: false
+tabWidth: 2
+useTabs: false
+vueIndentScriptAndStyle: false

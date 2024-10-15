@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "paths": {
+      "src/*": ["src/*"]
+    }
+  },
+  "include": ["src", "electron", "postcss.config.js", "tailwind.config.js"],
+  "exclude": ["dist"],
+}

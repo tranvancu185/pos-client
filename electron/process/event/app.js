@@ -1,0 +1,15 @@
+export default {
+  QUIT_APP: 'quit-app',
+  GET_VERSION: 'get-version',
+  CHECK_UPDATE: 'check-update',
+  UPDATE_MESSAGE: 'update-message',
+  QUIT_AND_UPDATE: 'quit-and-update',
+  BIDV_PROXY_CHECK_PAYMENT: 'bidv-proxy-check-payment',
+  BIDV_RESPONSE: 'bidv-response',
+  GET_BASE_URL: 'get-base-url',
+  PROCESS_UPDATE: 'process-update',
+  INFO_UPDATE: 'info-update',
+  LOGGING_DATA: 'logging-data',
+  PUSH_LOGGING: 'push-logging',
+  CLEAR_LOGGING: 'clear-logging',
+};

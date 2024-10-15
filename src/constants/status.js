@@ -1,0 +1,116 @@
+export const STATUS_DEFAULT = 0
+export const STATUS_ACTIVE = 1
+export const STATUS_INACTIVE = 2
+export const STATUS_DELETED = 3
+export const STATUS_PENDING = 4
+export const STATUS_REJECTED = 5
+export const STATUS_APPROVED = 6
+export const STATUS_DRAFT = 7
+export const STATUS_PUBLISHED = 8
+export const STATUS_COMPLETED = 9
+export const STATUS_CANCELLED = 10
+
+export const STATUS_COMMON = {
+    DEFAULT: STATUS_DEFAULT,
+    INACTIVE: STATUS_INACTIVE,
+    ACTIVE: STATUS_ACTIVE,
+    DELETED: STATUS_DELETED,
+    PENDING: STATUS_PENDING,
+    REJECTED: STATUS_REJECTED,
+    APPROVED: STATUS_APPROVED,
+    DRAFT: STATUS_DRAFT,
+    PUBLISHED: STATUS_PUBLISHED,
+    COMPLETED: STATUS_COMPLETED,
+    CANCELLED: STATUS_CANCELLED
+}
+
+export const STATUS_COMMON_NAME = {
+    DEFAULT: 'default',
+    INACTIVE: 'inactive',
+    ACTIVE: 'active',
+    DELETED: 'deleted',
+    PENDING: 'pending',
+    REJECTED: 'rejected',
+    APPROVED: 'approved',
+    DRAFT: 'draft',
+    PUBLISHED: 'published',
+    COMPLETED: 'completed',
+    CANCELLED: 'cancelled'
+}
+
+export const STATUS_COLORS = {
+    DEFAULT: 'default',
+    INACTIVE: 'secondary',
+    ACTIVE: 'success',
+    DELETED: 'danger',
+    PENDING: 'secondary',
+    REJECTED: 'danger',
+    APPROVED: 'success',
+    DRAFT: 'warning',
+    PUBLISHED: 'success',
+    COMPLETED: 'success',
+    CANCELLED: 'danger'
+}
+
+export const STATUS_OPTIONS = [
+    { label: STATUS_COMMON_NAME.DEFAULT, value: STATUS_COMMON.DEFAULT },
+    { label: STATUS_COMMON_NAME.ACTIVE, value: STATUS_COMMON.ACTIVE },
+    { label: STATUS_COMMON_NAME.INACTIVE, value: STATUS_COMMON.INACTIVE },
+    { label: STATUS_COMMON_NAME.PENDING, value: STATUS_COMMON.PENDING },
+    { label: STATUS_COMMON_NAME.REJECTED, value: STATUS_COMMON.REJECTED },
+    { label: STATUS_COMMON_NAME.APPROVED, value: STATUS_COMMON.APPROVED },
+    { label: STATUS_COMMON_NAME.DRAFT, value: STATUS_COMMON.DRAFT },
+    { label: STATUS_COMMON_NAME.PUBLISHED, value: STATUS_COMMON.PUBLISHED },
+    { label: STATUS_COMMON_NAME.COMPLETED, value: STATUS_COMMON.COMPLETED },
+    { label: STATUS_COMMON_NAME.CANCELLED, value: STATUS_COMMON.CANCELLED }
+]
+
+export const MAPPED_STATUS_TOOLTIP_COLOR = {
+    [STATUS_COMMON.DEFAULT]: {
+        color: STATUS_COLORS.DEFAULT,
+        name: STATUS_COMMON_NAME.DEFAULT
+    },
+    [STATUS_COMMON.ACTIVE]: {
+        color: STATUS_COLORS.ACTIVE,
+        name: STATUS_COMMON_NAME.ACTIVE
+    },
+    [STATUS_COMMON.INACTIVE]: {
+        color: STATUS_COLORS.INACTIVE,
+        name: STATUS_COMMON_NAME.INACTIVE
+    },
+    [STATUS_COMMON.PENDING]: {
+        color: STATUS_COLORS.PENDING,
+        name: STATUS_COMMON_NAME.PENDING
+    },
+    [STATUS_COMMON.REJECTED]: {
+        color: STATUS_COLORS.REJECTED,
+        name: STATUS_COMMON_NAME.REJECTED
+    },
+    [STATUS_COMMON.APPROVED]: {
+        color: STATUS_COLORS.APPROVED,
+        name: STATUS_COMMON_NAME.APPROVED
+    },
+    [STATUS_COMMON.DRAFT]: {
+        color: STATUS_COLORS.DRAFT,
+        name: STATUS_COMMON_NAME.DRAFT
+    },
+    [STATUS_COMMON.PUBLISHED]: {
+        color: STATUS_COLORS.PUBLISHED,
+        name: STATUS_COMMON_NAME.PUBLISHED
+    },
+    [STATUS_COMMON.COMPLETED]: {
+        color: STATUS_COLORS.COMPLETED,
+        name: STATUS_COMMON_NAME.COMPLETED
+    },
+    [STATUS_COMMON.CANCELLED]: {
+        color: STATUS_COLORS.CANCELLED,
+        name: STATUS_COMMON_NAME.CANCELLED
+    }
+}
+
+export const USER_STATUS_OPTIONS = [
+    { label: STATUS_COMMON_NAME.ACTIVE, value: STATUS_COMMON.ACTIVE },
+    { label: STATUS_COMMON_NAME.INACTIVE, value: STATUS_COMMON.INACTIVE },
+    { label: STATUS_COMMON_NAME.DELETED, value: STATUS_COMMON.DELETED }
+]
+
