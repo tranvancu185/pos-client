@@ -1,90 +1,90 @@
-import { NavLink } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { MAPPED_STATUS_TOOLTIP_COLOR } from 'src/constants/status'
-import { PAGE_SIZES } from 'src/constants/common'
-import { SearchForm } from './components/SearchForm'
-import { getListTable } from 'src/apis/table/table'
+import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { MAPPED_STATUS_TOOLTIP_COLOR } from 'src/constants/status';
+import { PAGE_SIZES } from 'src/constants/common';
+import { SearchForm } from './components/SearchForm';
+import { getListTable } from 'src/apis/table/table';
 
-import sortBy from 'lodash/sortBy'
-import IconTrashLines from 'src/components/icon/IconTrashLines'
-import IconEdit from 'src/components/icon/IconEdit'
-import IconEye from 'src/components/icon/IconEye'
-import useLayoutStore from 'src/stores/layoutStore'
+import sortBy from 'lodash/sortBy';
+import IconTrashLines from 'src/components/icon/IconTrashLines';
+import IconEdit from 'src/components/icon/IconEdit';
+import IconEye from 'src/components/icon/IconEye';
+import useLayoutStore from 'src/stores/layoutStore';
 
 const TableListPage = () => {
-  const themeConfig = useLayoutStore((state) => state)
+  const themeConfig = useLayoutStore((state) => state);
 
-  const { setPageTitle } = themeConfig
-  const [items, setItems] = useState([])
-  const [page, setPage] = useState(1)
+  const { setPageTitle } = themeConfig;
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
   const [sortStatus, setSortStatus] = useState({
     columnAccessor: 'firstName',
     direction: 'asc',
-  })
+  });
 
-  const [pageSize, setPageSize] = useState(PAGE_SIZES[0])
-  const [initialRecords, setInitialRecords] = useState(sortBy(items, 'table'))
-  const [records, setRecords] = useState(initialRecords)
-  const [selectedRecords, setSelectedRecords] = useState([])
+  const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
+  const [initialRecords, setInitialRecords] = useState(sortBy(items, 'table'));
+  const [records, setRecords] = useState(initialRecords);
+  const [selectedRecords, setSelectedRecords] = useState([]);
 
   const fetchItems = async (dataFetch = {}) => {
     try {
-      const list = await getListTable({ params: {} })
-      setItems(list)
+      const list = await getListTable({ params: {} });
+      setItems(list);
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Error:', error);
     }
-  }
+  };
 
   const handleSearchForm = (e) => {
-    e.preventDefault()
-    console.log(e)
+    e.preventDefault();
+    console.log(e);
     // fetchItems({ search });
-  }
+  };
 
   const deleteRow = (id = null) => {
     if (window.confirm('Are you sure want to delete selected row ?')) {
       if (id) {
-        setRecords(items.filter((item) => item.id !== id))
-        setInitialRecords(items.filter((item) => item.id !== id))
-        setItems(items.filter((item) => item.id !== id))
-        setSearch('')
-        setSelectedRecords([])
+        setRecords(items.filter((item) => item.id !== id));
+        setInitialRecords(items.filter((item) => item.id !== id));
+        setItems(items.filter((item) => item.id !== id));
+        setSearch('');
+        setSelectedRecords([]);
       } else {
-        let selectedRows = selectedRecords || []
+        let selectedRows = selectedRecords || [];
         const ids = selectedRows.map((d) => {
-          return d.id
-        })
-        const result = items.filter((d) => !ids.includes(d.id))
-        setRecords(result)
-        setInitialRecords(result)
-        setItems(result)
-        setSearch('')
-        setSelectedRecords([])
-        setPage(1)
+          return d.id;
+        });
+        const result = items.filter((d) => !ids.includes(d.id));
+        setRecords(result);
+        setInitialRecords(result);
+        setItems(result);
+        setSearch('');
+        setSelectedRecords([]);
+        setPage(1);
       }
     }
-  }
+  };
 
   useEffect(() => {
-    fetchItems()
-  }, [])
+    fetchItems();
+  }, []);
 
   useEffect(() => {
-    setPage(1)
-  }, [pageSize])
+    setPage(1);
+  }, [pageSize]);
 
   useEffect(() => {
-    setPageTitle('Table List')
-  }, [setPageTitle])
+    setPageTitle('Table List');
+  }, [setPageTitle]);
 
   useEffect(() => {
-    const from = (page - 1) * pageSize
-    const to = from + pageSize
-    setRecords([...initialRecords.slice(from, to)])
-  }, [page, pageSize, initialRecords])
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize;
+    setRecords([...initialRecords.slice(from, to)]);
+  }, [page, pageSize, initialRecords]);
 
   useEffect(() => {
     setInitialRecords(() => {
@@ -94,16 +94,16 @@ const TableListPage = () => {
           item.name.toLowerCase().includes(search.toLowerCase()) ||
           item.code.toLowerCase().includes(search.toLowerCase()) ||
           item.status.includes(search.toLowerCase())
-        )
-      })
-    })
-  }, [search])
+        );
+      });
+    });
+  }, [search]);
 
   useEffect(() => {
-    const data2 = sortBy(initialRecords, sortStatus.columnAccessor)
-    setRecords(sortStatus.direction === 'desc' ? data2.reverse() : data2)
-    setPage(1)
-  }, [sortStatus])
+    const data2 = sortBy(initialRecords, sortStatus.columnAccessor);
+    setRecords(sortStatus.direction === 'desc' ? data2.reverse() : data2);
+    setPage(1);
+  }, [sortStatus]);
 
   const columns = [
     {
@@ -137,8 +137,8 @@ const TableListPage = () => {
       accessor: 'status',
       sortable: true,
       render: ({ status }) => {
-        const statusMapped = MAPPED_STATUS_TOOLTIP_COLOR[status]
-        return <div className={`badge badge-${statusMapped.color} `}>{statusMapped.name}</div>
+        const statusMapped = MAPPED_STATUS_TOOLTIP_COLOR[status];
+        return <div className={`badge badge-${statusMapped.color} `}>{statusMapped.name}</div>;
       },
     },
     {
@@ -162,10 +162,12 @@ const TableListPage = () => {
         </div>
       ),
     },
-  ]
+  ];
 
   return (
-    <div className="px-0 border-white-light dark:border-[#1b2e4b]">
+    <div
+      className={`px-0 border-white-light dark:border-[#1b2e4b] ${themeConfig.animation} p-6 animate__animated`}
+    >
       <div className="panel mx-4 gap-4 my-4">
         <SearchForm handleSearchForm={handleSearchForm} deleteRow={deleteRow} />
       </div>
@@ -173,7 +175,7 @@ const TableListPage = () => {
         <div className="datatables pagination-padding px-2"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TableListPage
+export default TableListPage;

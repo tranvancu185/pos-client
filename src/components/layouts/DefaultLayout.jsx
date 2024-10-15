@@ -1,52 +1,52 @@
-import { useEffect, useState } from 'react'
-import App from 'src/App'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import Setting from './components/Setting'
-import Sidebar from './components/Sidebar'
-import Portals from 'src/components/Portals'
-import { Outlet } from 'react-router-dom'
-import Loader from '../common/Loader'
-import useLayoutStore from 'src/stores/layoutStore'
-import { MantineProvider } from '@mantine/core'
-import ProcessingPage from 'src/hooks/ProcessingPage'
+import { useEffect, useState } from 'react';
+import App from 'src/App';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Setting from './components/Setting';
+import Sidebar from './components/Sidebar';
+import Portals from 'src/components/Portals';
+import { Outlet } from 'react-router-dom';
+import Loader from '../common/Loader';
+import useLayoutStore from 'src/stores/layoutStore';
+import { MantineProvider } from '@mantine/core';
+import ProcessingPage from 'src/hooks/ProcessingPage';
 
 const DefaultLayout = () => {
-  const themeConfig = useLayoutStore((state) => state)
+  const themeConfig = useLayoutStore((state) => state);
 
-  const { toggleSidebar } = themeConfig
+  const { toggleSidebar } = themeConfig;
 
-  const [showLoader, setShowLoader] = useState(true)
-  const [showTopButton, setShowTopButton] = useState(false)
+  const [showLoader, setShowLoader] = useState(true);
+  const [showTopButton, setShowTopButton] = useState(false);
 
   const goToTop = () => {
-    document.body.scrollTop = 0
-    document.documentElement.scrollTop = 0
-  }
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
 
   const onScrollHandler = () => {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      setShowTopButton(true)
+      setShowTopButton(true);
     } else {
-      setShowTopButton(false)
+      setShowTopButton(false);
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('scroll', onScrollHandler)
+    window.addEventListener('scroll', onScrollHandler);
 
-    const screenLoader = document.getElementsByClassName('screen_loader')
+    const screenLoader = document.getElementsByClassName('screen_loader');
     if (screenLoader?.length) {
-      screenLoader[0].classList.add('animate__fadeOut')
+      screenLoader[0].classList.add('animate__fadeOut');
       setTimeout(() => {
-        setShowLoader(false)
-      }, 200)
+        setShowLoader(false);
+      }, 200);
     }
 
     return () => {
-      window.removeEventListener('onscroll', onScrollHandler)
-    }
-  }, [])
+      window.removeEventListener('onscroll', onScrollHandler);
+    };
+  }, []);
 
   return (
     <>
@@ -100,11 +100,9 @@ const DefaultLayout = () => {
 
               {/* BEGIN CONTENT AREA */}
               {/* <Suspense> */}
-              <div className={`${themeConfig.animation} p-6 animate__animated`}>
-                <MantineProvider defaultColorScheme="dark">
-                  <Outlet />
-                </MantineProvider>
-              </div>
+              {/* <div className={`${themeConfig.animation} p-6 animate__animated`}> */}
+              <Outlet />
+              {/* </div> */}
               {/* </Suspense> */}
               {/* END CONTENT AREA */}
 
@@ -117,7 +115,7 @@ const DefaultLayout = () => {
         </div>
       </App>
     </>
-  )
-}
+  );
+};
 
-export default DefaultLayout
+export default DefaultLayout;

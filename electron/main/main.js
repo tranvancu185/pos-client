@@ -207,7 +207,7 @@ function createWindow() {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show();
   });
-  mainwindow.maximize();
+  mainWindow.maximize();
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
