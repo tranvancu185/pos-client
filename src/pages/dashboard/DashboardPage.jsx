@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect } from 'react';
 import useLayoutStore from 'src/stores/layoutStore';
 
@@ -11,11 +10,7 @@ const DashboardPage = () => {
     handleToggleSidebar(true);
   }, [handleToggleSidebar, setPageTitle]);
 
-  return (
-    <>
-      <div> class</div>
-    </>
-  );
+  return <>ghaahaha</>;
 };
 
 export default DashboardPage;
