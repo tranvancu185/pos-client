@@ -1,10 +1,7 @@
-import React from "react"
-
+import React from 'react';
 
 const TableDetailPage = () => {
-    return (
-        <div>TableDetailPage</div>
-    )
-}
+  return <div>TableDetailPage</div>;
+};
 
-export default TableDetailPage
+export default TableDetailPage;

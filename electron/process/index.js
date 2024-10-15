@@ -1,20 +1,20 @@
-import handleEvent from './process';
+import handleEvent from './process'
 
 export default async function ({ type, event, data }) {
-  let result = null;
+  let result = null
   switch (type) {
     case 'event':
-      result = await handleEvent({ event, data });
-      break;
+      result = await handleEvent({ event, data })
+      break
     case 'response':
-      console.log({ type, event, data });
-      break;
+      console.log({ type, event, data })
+      break
     case 'error':
-      break;
+      break
     case 'log':
-      break;
+      break
     default:
-      break;
+      break
   }
-  return result;
+  return result
 }

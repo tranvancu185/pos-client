@@ -1,83 +1,83 @@
-import { Link, NavLink } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import sortBy from 'lodash/sortBy'
-import IconTrashLines from 'src/components/icon/IconTrashLines'
-import IconPlus from 'src/components/icon/IconPlus'
-import IconEdit from 'src/components/icon/IconEdit'
-import IconEye from 'src/components/icon/IconEye'
-import useLayoutStore from 'src/stores/layoutStore'
-import { PAGE_SIZES } from 'src/constants/common'
-import { DataTable } from 'mantine-datatable'
-import Select from 'react-select'
+import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import sortBy from 'lodash/sortBy';
+import IconTrashLines from 'src/components/icon/IconTrashLines';
+import IconPlus from 'src/components/icon/IconPlus';
+import IconEdit from 'src/components/icon/IconEdit';
+import IconEye from 'src/components/icon/IconEye';
+import useLayoutStore from 'src/stores/layoutStore';
+import { PAGE_SIZES } from 'src/constants/common';
+import { DataTable } from 'mantine-datatable';
+import Select from 'react-select';
 
 const MenuListPage = () => {
-  const themeConfig = useLayoutStore((state) => state)
-  const { setPageTitle } = themeConfig
-  const [items, setItems] = useState([])
-  const [page, setPage] = useState(1)
+  const themeConfig = useLayoutStore((state) => state);
+  const { setPageTitle } = themeConfig;
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
   const [sortStatus, setSortStatus] = useState({
     columnAccessor: 'firstName',
     direction: 'asc',
-  })
+  });
 
-  const [pageSize, setPageSize] = useState(PAGE_SIZES[0])
-  const [initialRecords, setInitialRecords] = useState(sortBy(items, 'invoice'))
-  const [records, setRecords] = useState(initialRecords)
-  const [selectedRecords, setSelectedRecords] = useState([])
+  const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
+  const [initialRecords, setInitialRecords] = useState(sortBy(items, 'invoice'));
+  const [records, setRecords] = useState(initialRecords);
+  const [selectedRecords, setSelectedRecords] = useState([]);
 
   const deleteRow = (id = null) => {
     if (window.confirm('Are you sure want to delete selected row ?')) {
       if (id) {
-        setRecords(items.filter((user) => user.id !== id))
-        setInitialRecords(items.filter((user) => user.id !== id))
-        setItems(items.filter((user) => user.id !== id))
-        setSearch('')
-        setSelectedRecords([])
+        setRecords(items.filter((user) => user.id !== id));
+        setInitialRecords(items.filter((user) => user.id !== id));
+        setItems(items.filter((user) => user.id !== id));
+        setSearch('');
+        setSelectedRecords([]);
       } else {
-        let selectedRows = selectedRecords || []
+        let selectedRows = selectedRecords || [];
         const ids = selectedRows.map((d) => {
-          return d.id
-        })
-        const result = items.filter((d) => !ids.includes(d.id))
-        setRecords(result)
-        setInitialRecords(result)
-        setItems(result)
-        setSearch('')
-        setSelectedRecords([])
-        setPage(1)
+          return d.id;
+        });
+        const result = items.filter((d) => !ids.includes(d.id));
+        setRecords(result);
+        setInitialRecords(result);
+        setItems(result);
+        setSearch('');
+        setSelectedRecords([]);
+        setPage(1);
       }
     }
-  }
+  };
 
   const fetchItems = async (dataFetch = {}) => {
     try {
-      const response = await window.api.getListTable(dataFetch)
-      console.log('Menu List:', response)
-      setItems(response)
+      const response = await window.api.getListTable(dataFetch);
+      console.log('Menu List:', response);
+      setItems(response);
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Error:', error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchItems()
-  }, [])
+    fetchItems();
+  }, []);
 
   useEffect(() => {
-    setPage(1)
-  }, [pageSize])
+    setPage(1);
+  }, [pageSize]);
 
   useEffect(() => {
-    setPageTitle('Menu')
-  }, [setPageTitle])
+    setPageTitle('Menu');
+  }, [setPageTitle]);
 
   useEffect(() => {
-    const from = (page - 1) * pageSize
-    const to = from + pageSize
-    setRecords([...initialRecords.slice(from, to)])
-  }, [page, pageSize, initialRecords])
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize;
+    setRecords([...initialRecords.slice(from, to)]);
+  }, [page, pageSize, initialRecords]);
 
   useEffect(() => {
     setInitialRecords(() => {
@@ -89,16 +89,16 @@ const MenuListPage = () => {
           item.date.toLowerCase().includes(search.toLowerCase()) ||
           item.amount.toLowerCase().includes(search.toLowerCase()) ||
           item.status.tooltip.toLowerCase().includes(search.toLowerCase())
-        )
-      })
-    })
-  }, [search])
+        );
+      });
+    });
+  }, [search]);
 
   useEffect(() => {
-    const data2 = sortBy(initialRecords, sortStatus.columnAccessor)
-    setRecords(sortStatus.direction === 'desc' ? data2.reverse() : data2)
-    setPage(1)
-  }, [sortStatus])
+    const data2 = sortBy(initialRecords, sortStatus.columnAccessor);
+    setRecords(sortStatus.direction === 'desc' ? data2.reverse() : data2);
+    setPage(1);
+  }, [sortStatus]);
 
   const columns = [
     {
@@ -168,7 +168,7 @@ const MenuListPage = () => {
         </div>
       ),
     },
-  ]
+  ];
 
   return (
     <div className="panel px-0 border-white-light dark:border-[#1b2e4b]">
@@ -236,7 +236,7 @@ const MenuListPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuListPage
+export default MenuListPage;

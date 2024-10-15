@@ -1,23 +1,23 @@
-import { useState } from 'react'
-import Dropdown from 'src/components/lib/Dropdown'
-import i18next from 'i18next'
-import IconCaretDown from 'src/components/icon/IconCaretDown'
-import VNFlag from 'src/assets/images/flags/VN.svg'
-import ENFlag from 'src/assets/images/flags/EN.svg'
-import useLayoutStore from 'src/stores/layoutStore'
+import { useState } from 'react';
+import Dropdown from 'src/components/lib/Dropdown';
+import i18next from 'i18next';
+import IconCaretDown from 'src/components/icon/IconCaretDown';
+import VNFlag from 'src/assets/images/flags/VN.svg';
+import ENFlag from 'src/assets/images/flags/EN.svg';
+import useLayoutStore from 'src/stores/layoutStore';
 
 const DropdownLang = ({ className, button, btnClassName, handleChange }) => {
-  const themeConfig = useLayoutStore((state) => state)
-  const isRtl = themeConfig.rtlClass === 'rtl' ? true : false
+  const themeConfig = useLayoutStore((state) => state);
+  const isRtl = themeConfig.rtlClass === 'rtl' ? true : false;
 
-  const [flag, setFlag] = useState(themeConfig.locale)
+  const [flag, setFlag] = useState(themeConfig.locale);
 
   const setLocale = (flag) => {
-    setFlag(flag)
+    setFlag(flag);
     if (typeof handleChange === 'function') {
-      handleChange(flag)
+      handleChange(flag);
     }
-  }
+  };
 
   return (
     <div className={className ?? 'dropdown ms-auto w-max'}>
@@ -44,8 +44,7 @@ const DropdownLang = ({ className, button, btnClassName, handleChange }) => {
               </span>
             </>
           )
-        }
-      >
+        }>
         <ul className="!px-2 text-dark dark:text-white-dark grid grid-cols-2 gap-2 font-semibold dark:text-white-light/90 w-[280px]">
           {themeConfig.languageList.map((item) => {
             return (
@@ -55,12 +54,11 @@ const DropdownLang = ({ className, button, btnClassName, handleChange }) => {
                   className={`flex w-full hover:text-primary rounded-lg ${flag === item.code ? 'bg-primary/10 text-primary' : ''}`}
                   onClick={() => {
                     i18next.changeLanguage(item.code).catch((error) => {
-                      console.log(error)
-                    })
+                      console.log(error);
+                    });
                     // setFlag(item.code);
-                    setLocale(item.code)
-                  }}
-                >
+                    setLocale(item.code);
+                  }}>
                   <img
                     src={item.code.toUpperCase() === 'EN' ? ENFlag : VNFlag}
                     alt="flag"
@@ -69,12 +67,12 @@ const DropdownLang = ({ className, button, btnClassName, handleChange }) => {
                   <span className="ltr:ml-3 rtl:mr-3">{item.name}</span>
                 </button>
               </li>
-            )
+            );
           })}
         </ul>
       </Dropdown>
     </div>
-  )
-}
+  );
+};
 
-export default DropdownLang
+export default DropdownLang;

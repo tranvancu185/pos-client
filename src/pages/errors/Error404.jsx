@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import Error404DarkIMG from 'src/assets/images/error/404-dark.svg'
-import Error404LightIMG from 'src/assets/images/error/404-light.svg'
-import useLayoutStore from 'src/stores/layoutStore'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Error404DarkIMG from 'src/assets/images/error/404-dark.svg';
+import Error404LightIMG from 'src/assets/images/error/404-light.svg';
+import useLayoutStore from 'src/stores/layoutStore';
 
 const Error404 = () => {
-  const themeConfig = useLayoutStore((state) => state)
-  const { setPageTitle, isDark } = themeConfig
+  const themeConfig = useLayoutStore((state) => state);
+  const { setPageTitle, isDark } = themeConfig;
 
   useEffect(() => {
-    setPageTitle('Error 404')
-  }, [setPageTitle])
+    setPageTitle('Error 404');
+  }, [setPageTitle]);
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
@@ -24,14 +24,13 @@ const Error404 = () => {
           <p className="mt-5 text-base dark:text-white">The page you requested was not found!</p>
           <Link
             to="/"
-            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none"
-          >
+            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none">
             Home
           </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Error404
+export default Error404;

@@ -1,32 +1,32 @@
-import { useState, useEffect } from 'react'
-import { SearchForm } from './components/SearchForm'
-import { Link } from 'react-router-dom'
-import { UserTable } from './components/UserTable'
-import { PAGE_SIZES } from 'src/constants/common'
-import { getListUser } from 'src/apis/user/user'
-import { useTranslation } from 'react-i18next'
+import { useState, useEffect } from 'react';
+import { SearchForm } from './components/SearchForm';
+import { Link } from 'react-router-dom';
+import { UserTable } from './components/UserTable';
+import { PAGE_SIZES } from 'src/constants/common';
+import { getListUser } from 'src/apis/user/user';
+import { useTranslation } from 'react-i18next';
 
-import useLayoutStore from 'src/stores/layoutStore'
-import Loading from 'src/components/common/Loading'
-import IconHome from 'src/components/icon/IconHome'
+import useLayoutStore from 'src/stores/layoutStore';
+import Loading from 'src/components/common/Loading';
+import IconHome from 'src/components/icon/IconHome';
 
 const TableListPage = () => {
-  const { t } = useTranslation()
-  const themeConfig = useLayoutStore((state) => state)
-  const { setPageTitle } = themeConfig
+  const { t } = useTranslation();
+  const themeConfig = useLayoutStore((state) => state);
+  const { setPageTitle } = themeConfig;
 
-  const [page, setPage] = useState(1)
-  const [pageSize, setPageSize] = useState(PAGE_SIZES[0])
-  const [totalItems, setTotalItems] = useState(0)
-  const [dataSource, setDataSource] = useState([])
-  const [loading, setLoading] = useState(0)
-
-  useEffect(() => {
-    setPageTitle('User List')
-  }, [setPageTitle])
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [dataSource, setDataSource] = useState([]);
+  const [loading, setLoading] = useState(0);
 
   useEffect(() => {
-    setLoading(1)
+    setPageTitle('User List');
+  }, [setPageTitle]);
+
+  useEffect(() => {
+    setLoading(1);
     fetchUsers({
       params: {
         page_size: pageSize,
@@ -37,58 +37,58 @@ const TableListPage = () => {
           response.data.rows.map((item, index) => ({
             ...item,
             key: item.user_id,
-          }))
-        )
-        setTotalItems(response.data.total)
+          })),
+        );
+        setTotalItems(response.data.total);
       },
       errorCallBack: (response) => {
-        console.error('Error:', response)
+        console.error('Error:', response);
       },
-    })
-  }, [pageSize, page])
+    });
+  }, [pageSize, page]);
 
   const fetchUsers = async ({ params = {}, successCallBack = false, errorCallBack = false }) => {
     try {
-      const response = await getListUser({ params })
+      const response = await getListUser({ params });
       if (response.status === 200) {
         if (typeof successCallBack === 'function') {
-          successCallBack(response)
+          successCallBack(response);
         }
       } else {
         if (typeof errorCallBack === 'function') {
-          errorCallBack(response)
+          errorCallBack(response);
         }
       }
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Error:', error);
       // TODO: handle error here
     }
-    setLoading(0)
-  }
+    setLoading(0);
+  };
 
   const handleSearchForm = async (values) => {
-    setLoading(1)
+    setLoading(1);
     const bodyRequest = {
       page_size: pageSize,
       page: page,
       phone: values.code,
       name: values.code,
       status: values.status?.value,
-    }
+    };
     await fetchUsers({
       params: bodyRequest,
       successCallBack: (response) => {
-        setDataSource(response.data.rows)
-        setTotalItems(response.data.total)
+        setDataSource(response.data.rows);
+        setTotalItems(response.data.total);
       },
       errorCallBack: (response) => {
-        console.error('Error:', response)
+        console.error('Error:', response);
       },
-    })
-  }
+    });
+  };
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -122,7 +122,7 @@ const TableListPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default TableListPage
+export default TableListPage;

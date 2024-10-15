@@ -12,4 +12,4 @@ export default {
   LOGGING_DATA: 'logging-data',
   PUSH_LOGGING: 'push-logging',
   CLEAR_LOGGING: 'clear-logging',
-};
+}

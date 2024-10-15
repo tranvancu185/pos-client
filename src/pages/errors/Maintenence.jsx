@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import MaintanceDarkIMG from 'src/assets/images/error/maintenence-dark.svg'
-import MaintanceLightIMG from 'src/assets/images/error/maintenence-light.svg'
-import useLayoutStore from 'src/stores/layoutStore'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import MaintanceDarkIMG from 'src/assets/images/error/maintenence-dark.svg';
+import MaintanceLightIMG from 'src/assets/images/error/maintenence-light.svg';
+import useLayoutStore from 'src/stores/layoutStore';
 
 const Maintenence = () => {
-  const themeConfig = useLayoutStore((state) => state)
-  const { setPageTitle, isDark } = themeConfig
+  const themeConfig = useLayoutStore((state) => state);
+  const { setPageTitle, isDark } = themeConfig;
 
   useEffect(() => {
-    setPageTitle('Maintenance')
-  }, [setPageTitle])
+    setPageTitle('Maintenance');
+  }, [setPageTitle]);
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
@@ -34,14 +34,13 @@ const Maintenence = () => {
           </div>
           <Link
             to="/"
-            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none"
-          >
+            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none">
             Home
           </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Maintenence
+export default Maintenence;

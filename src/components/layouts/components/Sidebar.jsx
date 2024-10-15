@@ -1,28 +1,28 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
-import PerfectScrollbar from 'react-perfect-scrollbar'
-import { useTranslation } from 'react-i18next'
-import { NavLink, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import { APP_COMPANY } from 'src/web.config'
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import { useTranslation } from 'react-i18next';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { APP_COMPANY } from 'src/web.config';
 
-import IconCaretsDown from '../../icon/IconCaretsDown'
-import IconMenuDashboard from '../../icon/menu/IconMenuDashboard'
-import IconMinus from '../../icon/IconMinus'
-import IconMenuChat from '../../icon/menu/IconMenuChat'
-import IconMenuNotes from '../../icon/menu/IconMenuNotes'
-import InsideLogo from 'src/assets/images/logo.png'
-import useLayoutStore from 'src/stores/layoutStore'
+import IconCaretsDown from '../../icon/IconCaretsDown';
+import IconMenuDashboard from '../../icon/menu/IconMenuDashboard';
+import IconMinus from '../../icon/IconMinus';
+import IconMenuChat from '../../icon/menu/IconMenuChat';
+import IconMenuNotes from '../../icon/menu/IconMenuNotes';
+import InsideLogo from 'src/assets/images/logo.png';
+import useLayoutStore from 'src/stores/layoutStore';
 
 const Sidebar = () => {
   // const [currentMenu, setCurrentMenu] = useState('');
 
-  const themeConfig = useLayoutStore((state) => state)
-  const { semidark, toggleSidebar } = themeConfig
+  const themeConfig = useLayoutStore((state) => state);
+  const { semidark, toggleSidebar } = themeConfig;
 
-  const location = useLocation()
-  const { t } = useTranslation()
+  const location = useLocation();
+  const { t } = useTranslation();
 
   // const toggleMenu = (value) => {
   //     setCurrentMenu((oldValue) => {
@@ -32,35 +32,34 @@ const Sidebar = () => {
 
   useEffect(() => {
     const selector = document.querySelector(
-      '.sidebar ul a[href="' + window.location.pathname + '"]'
-    )
+      '.sidebar ul a[href="' + window.location.pathname + '"]',
+    );
     if (selector) {
-      selector.classList.add('active')
-      const ul = selector.closest('ul.sub-menu')
+      selector.classList.add('active');
+      const ul = selector.closest('ul.sub-menu');
       if (ul) {
-        let ele = ul.closest('li.menu').querySelectorAll('.nav-link') || []
+        let ele = ul.closest('li.menu').querySelectorAll('.nav-link') || [];
         if (ele.length) {
-          ele = ele[0]
+          ele = ele[0];
           setTimeout(() => {
-            ele.click()
-          })
+            ele.click();
+          });
         }
       }
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (window.innerWidth < 1024 && themeConfig.sidebar) {
-      toggleSidebar()
+      toggleSidebar();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location])
+  }, [location]);
 
   return (
     <div className={`${semidark ? 'dark' : ''}`}>
       <nav
-        className={`sidebar fixed min-h-screen h-full top-0 bottom-0 w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] z-50 transition-all duration-300 ${semidark ? 'text-white-dark' : ''}`}
-      >
+        className={`sidebar fixed min-h-screen h-full top-0 bottom-0 w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] z-50 transition-all duration-300 ${semidark ? 'text-white-dark' : ''}`}>
         <div className="bg-white dark:bg-black h-full">
           <div className="flex justify-between items-center px-4 py-3">
             <NavLink to="/pos" className="main-logo flex items-center shrink-0">
@@ -73,8 +72,7 @@ const Sidebar = () => {
             <button
               type="button"
               className="collapse-icon w-8 h-8 rounded-full flex items-center hover:bg-gray-500/10 dark:hover:bg-dark-light/10 dark:text-white-light transition duration-300 rtl:rotate-180"
-              onClick={() => toggleSidebar()}
-            >
+              onClick={() => toggleSidebar()}>
               <IconCaretsDown className="m-auto rotate-90" />
             </button>
           </div>
@@ -195,7 +193,7 @@ const Sidebar = () => {
         </div>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

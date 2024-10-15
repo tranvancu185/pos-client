@@ -1,13 +1,13 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import AuthRoutes from 'src/pages/auth/routes'
-import AdminRoutes from 'src/pages/admin/routes'
-import ReceiptDasboardRoutes from 'src/pages/dashboard/routes'
-import SettingRoutes from 'src/pages/settings/routes'
-import Loader from 'src/components/common/Loader'
-import ErrorRoutes from 'src/pages/errors/routes'
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import AuthRoutes from 'src/pages/auth/routes';
+import AdminRoutes from 'src/pages/admin/routes';
+import ReceiptDasboardRoutes from 'src/pages/dashboard/routes';
+import SettingRoutes from 'src/pages/settings/routes';
+import Loader from 'src/components/common/Loader';
+import ErrorRoutes from 'src/pages/errors/routes';
 
-export const ROUTER_DASHBOARD = '/pos'
+export const ROUTER_DASHBOARD = '/pos';
 
 const routes = [
   {
@@ -23,12 +23,12 @@ const routes = [
     path: '*',
     element: <Navigate to={'/errors/404'} replace />,
   },
-]
+];
 
 const getRoute = ({ index, path, Component, element, children, isLazy }) => {
-  let newElement = element
+  let newElement = element;
   if (isLazy) {
-    newElement = <React.Suspense fallback={<Loader />}>{element}</React.Suspense>
+    newElement = <React.Suspense fallback={<Loader />}>{element}</React.Suspense>;
   }
   return {
     path,
@@ -39,11 +39,11 @@ const getRoute = ({ index, path, Component, element, children, isLazy }) => {
           children: children.map((child) => getRoute(child)),
         }
       : { index }),
-  }
-}
+  };
+};
 
 export const getRoutes = () => {
-  return routes.map((route) => getRoute(route))
-}
+  return routes.map((route) => getRoute(route));
+};
 
-export default routes
+export default routes;

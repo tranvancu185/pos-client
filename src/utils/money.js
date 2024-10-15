@@ -2,10 +2,11 @@
 //     let unit = show_unit ? ' ' + show_unit : ''
 //     return value !== null || value !== undefined ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + unit : value
 // }
-export default (input, show_unit) => {//show_unit='VNĐ'
-  let unit = show_unit ? ' ' + show_unit : ''
+export default (input, show_unit) => {
+  //show_unit='VNĐ'
+  let unit = show_unit ? ' ' + show_unit : '';
   let value = input + '';
-  value = value.replace(/,/g, '')
+  value = value.replace(/,/g, '');
   const reg = /^-?[0-9,]*(\.[0-9]*)?$/;
   if (!isNaN(value) && reg.test(value)) {
     const list = value.split('.');
@@ -22,22 +23,22 @@ export default (input, show_unit) => {//show_unit='VNĐ'
     return `${prefix}${result}${list[1] ? `.${list[1]}` : ''}${unit}`;
   }
 
-  return input || ''
-}
+  return input || '';
+};
 
 export const convertToNumber = (value) => {
-  return parseFloat(value.replace(/,/g,''));
-}
+  return parseFloat(value.replace(/,/g, ''));
+};
 
 export const convertStringToMoney = (value) => {
   let result = 0;
-  if(typeof value === 'number') {
+  if (typeof value === 'number') {
     result = value;
   } else {
-    if(value && value !== "") {
-      value = value.replaceAll(",", "");
+    if (value && value !== '') {
+      value = value.replaceAll(',', '');
       let isnum = /^\d+$/.test(value.trim());
-      if(isnum || value.trim().length === 0){
+      if (isnum || value.trim().length === 0) {
         value = parseInt(value);
         value = value ? value : 0;
         result = value;
@@ -45,8 +46,8 @@ export const convertStringToMoney = (value) => {
     }
   }
   return result;
-}
+};
 
 export const roundingMoney = (value) => {
-  return Math.floor((+value)/1000)*1000;
-}
+  return Math.floor(+value / 1000) * 1000;
+};

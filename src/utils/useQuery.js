@@ -4,10 +4,10 @@
 //   return new URLSearchParams(useLocation().search);
 // };
 
-export const useHash = ()=>{
-    return new URLSearchParams(window.location.hash);
-}
+export const useHash = () => {
+  return new URLSearchParams(window.location.hash);
+};
 
-export default ()=> {
-    return new URLSearchParams(window.location.search);
-}
+export default () => {
+  return new URLSearchParams(window.location.search);
+};

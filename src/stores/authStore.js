@@ -1,13 +1,13 @@
-import { create } from 'zustand'
-import { devtools, persist } from 'zustand/middleware'
-import { API_TOKEN_KEY } from 'src/web.config'
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+import { API_TOKEN_KEY } from 'src/web.config';
 const defaultState = {
   profile: null,
   token: null,
   isAuthenticated: false,
   isVerify: false,
   isLoading: false,
-}
+};
 
 const useAuthStore = create()(
   devtools(
@@ -18,15 +18,15 @@ const useAuthStore = create()(
           set((state) => ({
             ...state,
             isLoading: true,
-          }))
+          }));
         },
         setLoginInfo(token) {
-          localStorage.setItem(API_TOKEN_KEY, token)
+          localStorage.setItem(API_TOKEN_KEY, token);
           set((state) => ({
             ...state,
             token: token,
             isAuthenticated: true,
-          }))
+          }));
         },
         setProfileInfo(profile) {
           set((state) => ({
@@ -34,7 +34,7 @@ const useAuthStore = create()(
             profile: profile,
             isLoading: false,
             isVerify: true,
-          }))
+          }));
         },
         setLogoutInfo() {
           set((state) => ({
@@ -43,15 +43,15 @@ const useAuthStore = create()(
             isAuthenticated: false,
             isVerify: false,
             isLoading: false,
-          }))
+          }));
         },
       }),
       {
         name: 'auth',
-      }
+      },
     ),
-    { enabled: true }
-  )
-)
+    { enabled: true },
+  ),
+);
 
-export default useAuthStore
+export default useAuthStore;
