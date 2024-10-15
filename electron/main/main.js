@@ -108,7 +108,7 @@ function createWindow() {
   } else {
     if (import.meta.env.VITE_RUN_SERVER) {
       try {
-        const serverProcess = spawn(join(app_root, '../../hasaki-pos-ws/server.exe')); // Điều chỉnh đường dẫn nếu cần
+        const serverProcess = spawn(join(app_root, '../../pos-ws/server.exe')); // Điều chỉnh đường dẫn nếu cần
 
         serverProcess.stdout.on('data', async (msg) => {
           console.log(

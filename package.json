@@ -1,7 +1,7 @@
 {
-  "name": "hasaki-pos",
+  "name": "app-pos",
   "version": "1.0.0",
-  "description": "Hasaki POS",
+  "description": "Vey POS",
   "main": "./out/main/index.js",
   "author": "Vey <harveytran185@gmail.com>",
   "scripts": {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { APP_COMPANY } from 'src/web.config';
 
 import useLayoutStore from 'src/stores/layoutStore';
 
@@ -122,7 +123,7 @@ const LoginPage = () => {
               <LoginForm submitForm={submitForm} />
             </div>
             <p className="absolute bottom-6 w-full text-center dark:text-white">
-              © {new Date().getFullYear()}.HASAKI.
+              © {new Date().getFullYear()}.{APP_COMPANY}.
             </p>
           </div>
         </div>

@@ -1,3 +1,3 @@
 provider: generic
 url: https://example.com/auto-updates
-updaterCacheDirName: hasaki-pos-client-updater
+updaterCacheDirName: pos-client-updater
