@@ -1,7 +1,10 @@
-import React from 'react';
+import React from "react"
+
 
 const ReconcileHistoryPage = () => {
-  return <div>ReconcileHistoryPage</div>;
-};
+    return (
+        <div>ReconcileHistoryPage</div>
+    )
+}
 
-export default ReconcileHistoryPage;
+export default ReconcileHistoryPage

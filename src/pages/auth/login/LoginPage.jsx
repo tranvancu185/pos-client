@@ -122,7 +122,7 @@ const LoginPage = () => {
               <LoginForm submitForm={submitForm} />
             </div>
             <p className="absolute bottom-6 w-full text-center dark:text-white">
-              © {new Date().getFullYear()}.VEY.
+              © {new Date().getFullYear()}.HASAKI.
             </p>
           </div>
         </div>

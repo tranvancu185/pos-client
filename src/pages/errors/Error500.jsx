@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Error500DarkIMG from 'src/assets/images/error/500-dark.svg';
-import Error500LightIMG from 'src/assets/images/error/500-light.svg';
-import useLayoutStore from 'src/stores/layoutStore';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import Error500DarkIMG from 'src/assets/images/error/500-dark.svg'
+import Error500LightIMG from 'src/assets/images/error/500-light.svg'
+import useLayoutStore from 'src/stores/layoutStore'
 
 const Error500 = () => {
-  const themeConfig = useLayoutStore((state) => state);
-  const { setPageTitle, isDark } = themeConfig;
+  const themeConfig = useLayoutStore((state) => state)
+  const { setPageTitle, isDark } = themeConfig
 
   useEffect(() => {
-    setPageTitle('Error 500');
-  }, [setPageTitle]);
+    setPageTitle('Error 500')
+  }, [setPageTitle])
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
@@ -24,13 +24,14 @@ const Error500 = () => {
           <p className="mt-5 text-base dark:text-white">Internal server error!</p>
           <Link
             to="/"
-            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none">
+            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none"
+          >
             Home
           </Link>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Error500;
+export default Error500

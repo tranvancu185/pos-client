@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 // import LoaderLogo from 'src/assets/inside/loader-logo.png';
 const Loader = () => {
@@ -10,7 +10,8 @@ const Loader = () => {
         height="64"
         viewBox="0 0 135 135"
         xmlns="http://www.w3.org/2000/svg"
-        fill="#326e51">
+        fill="#326e51"
+      >
         <path d="M67.447 58c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm9.448 9.447c0 5.523 4.477 10 10 10 5.522 0 10-4.477 10-10s-4.478-10-10-10c-5.523 0-10 4.477-10 10zm-9.448 9.448c-5.523 0-10 4.477-10 10 0 5.522 4.477 10 10 10s10-4.478 10-10c0-5.523-4.477-10-10-10zM58 67.447c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10z">
           <animateTransform
             attributeName="transform"
@@ -33,7 +34,7 @@ const Loader = () => {
         </path>
       </svg>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

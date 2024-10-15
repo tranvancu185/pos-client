@@ -1,62 +1,62 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import Dropdown from '../../lib/Dropdown';
-import IconMenu from '../../icon/IconMenu';
-import IconSun from '../../icon/IconSun';
-import IconMoon from '../../icon/IconMoon';
-import IconLaptop from '../../icon/IconLaptop';
-import IconLockDots from '../../icon/IconLockDots';
-import IconLogout from '../../icon/IconLogout';
-import IconMenuDashboard from '../../icon/menu/IconMenuDashboard';
-import IconCaretDown from '../../icon/IconCaretDown';
-import IconMenuApps from '../../icon/menu/IconMenuApps';
-import DropdownLang from '../../common/DropdownLang';
-import VNFlag from 'src/assets/images/flags/VN.svg';
-import ENFlag from 'src/assets/images/flags/EN.svg';
-import UserDefaultAVT from 'src/assets/images/avatar-default.svg';
-import InsideLogo from 'src/assets/images/logo.png';
-import useLayoutStore from 'src/stores/layoutStore';
-import useAuthStore from 'src/stores/authStore';
-import { WS_URL } from 'src/web.config';
-import { MAPPED_ROLE_COLORS } from 'src/constants/role';
-import IconUser from 'src/components/icon/IconUser';
+import { useEffect, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import Dropdown from '../../lib/Dropdown'
+import IconMenu from '../../icon/IconMenu'
+import IconSun from '../../icon/IconSun'
+import IconMoon from '../../icon/IconMoon'
+import IconLaptop from '../../icon/IconLaptop'
+import IconLockDots from '../../icon/IconLockDots'
+import IconLogout from '../../icon/IconLogout'
+import IconMenuDashboard from '../../icon/menu/IconMenuDashboard'
+import IconCaretDown from '../../icon/IconCaretDown'
+import IconMenuApps from '../../icon/menu/IconMenuApps'
+import DropdownLang from '../../common/DropdownLang'
+import VNFlag from 'src/assets/images/flags/VN.svg'
+import ENFlag from 'src/assets/images/flags/EN.svg'
+import UserDefaultAVT from 'src/assets/images/avatar-default.svg'
+import InsideLogo from 'src/assets/images/logo.png'
+import useLayoutStore from 'src/stores/layoutStore'
+import useAuthStore from 'src/stores/authStore'
+import { WS_URL } from 'src/web.config'
+import { MAPPED_ROLE_COLORS } from 'src/constants/role'
+import IconUser from 'src/components/icon/IconUser'
 
 const Header = () => {
-  const location = useLocation();
-  const themeConfig = useLayoutStore((state) => state);
-  const profile = useAuthStore((state) => state.profile);
+  const location = useLocation()
+  const themeConfig = useLayoutStore((state) => state)
+  const profile = useAuthStore((state) => state.profile)
 
-  const { isRtl, toggleSidebar, toggleTheme } = themeConfig;
+  const { isRtl, toggleSidebar, toggleTheme } = themeConfig
 
-  const [flag, setFlag] = useState(themeConfig.locale);
+  const [flag, setFlag] = useState(themeConfig.locale)
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   useEffect(() => {
     const selector = document.querySelector(
-      'ul.horizontal-menu a[href="' + window.location.pathname + '"]',
-    );
+      'ul.horizontal-menu a[href="' + window.location.pathname + '"]'
+    )
     if (selector) {
-      selector.classList.add('active');
-      const all = document.querySelectorAll('ul.horizontal-menu .nav-link.active');
+      selector.classList.add('active')
+      const all = document.querySelectorAll('ul.horizontal-menu .nav-link.active')
       for (let i = 0; i < all.length; i++) {
-        all[0]?.classList.remove('active');
+        all[0]?.classList.remove('active')
       }
-      const ul = selector.closest('ul.sub-menu');
+      const ul = selector.closest('ul.sub-menu')
       if (ul) {
-        let ele = ul.closest('li.menu').querySelectorAll('.nav-link');
+        let ele = ul.closest('li.menu').querySelectorAll('.nav-link')
         if (ele) {
-          ele = ele[0];
+          ele = ele[0]
           setTimeout(() => {
-            ele?.classList.add('active');
-          });
+            ele?.classList.add('active')
+          })
         }
       }
     }
-  }, [location]);
+  }, [location])
 
   // if (!profile) {
   //     return (<Navigate to="/auth/login" />);
@@ -64,7 +64,8 @@ const Header = () => {
 
   return (
     <header
-      className={`z-40 ${themeConfig.semidark && themeConfig.menu === 'horizontal' ? 'dark' : ''}`}>
+      className={`z-40 ${themeConfig.semidark && themeConfig.menu === 'horizontal' ? 'dark' : ''}`}
+    >
       <div className="shadow-sm">
         <div className="relative bg-white flex w-full items-center px-5 py-2.5 dark:bg-black">
           <div className="horizontal-logo flex lg:hidden justify-between items-center ltr:mr-2 rtl:ml-2">
@@ -78,8 +79,9 @@ const Header = () => {
               type="button"
               className="collapse-icon flex-none dark:text-[#d0d2d6] hover:text-primary dark:hover:text-primary flex lg:hidden ltr:ml-2 rtl:mr-2 p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:bg-white-light/90 dark:hover:bg-dark/60"
               onClick={() => {
-                toggleSidebar();
-              }}>
+                toggleSidebar()
+              }}
+            >
               <IconMenu className="w-5 h-5" />
             </button>
           </div>
@@ -94,8 +96,9 @@ const Header = () => {
                     'flex items-center p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60'
                   }`}
                   onClick={() => {
-                    toggleTheme('dark');
-                  }}>
+                    toggleTheme('dark')
+                  }}
+                >
                   <IconSun />
                 </button>
               ) : (
@@ -108,8 +111,9 @@ const Header = () => {
                     'flex items-center p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60'
                   }`}
                   onClick={() => {
-                    toggleTheme('system');
-                  }}>
+                    toggleTheme('system')
+                  }}
+                >
                   <IconMoon />
                 </button>
               )}
@@ -120,8 +124,9 @@ const Header = () => {
                     'flex items-center p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60'
                   }`}
                   onClick={() => {
-                    toggleTheme('light');
-                  }}>
+                    toggleTheme('light')
+                  }}
+                >
                   <IconLaptop />
                 </button>
               )}
@@ -155,7 +160,8 @@ const Header = () => {
                     }
                     alt="userProfile"
                   />
-                }>
+                }
+              >
                 <ul className="text-dark dark:text-white-dark !py-0 w-[230px] font-semibold dark:text-white-light/90">
                   <li>
                     <div className="flex items-center px-4 py-4">
@@ -172,7 +178,8 @@ const Header = () => {
                         <h4 className="text-base">
                           {profile?.user_display_name}
                           <span
-                            className={`text-xs bg-${profile?.user_role_id ? MAPPED_ROLE_COLORS[profile?.user_role_id].color : 'default'}-light rounded text-${profile?.user_role_id ? MAPPED_ROLE_COLORS[profile?.user_role_id].color : 'default'} px-1 ltr:ml-2 rtl:ml-2`}>
+                            className={`text-xs bg-${profile?.user_role_id ? MAPPED_ROLE_COLORS[profile?.user_role_id].color : 'default'}-light rounded text-${profile?.user_role_id ? MAPPED_ROLE_COLORS[profile?.user_role_id].color : 'default'} px-1 ltr:ml-2 rtl:ml-2`}
+                          >
                             {profile?.user_role_id
                               ? MAPPED_ROLE_COLORS[profile?.user_role_id]?.name
                               : 'Guest'}
@@ -180,7 +187,8 @@ const Header = () => {
                         </h4>
                         <button
                           type="button"
-                          className="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white">
+                          className="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
+                        >
                           {profile?.user_phone}
                         </button>
                       </div>
@@ -248,7 +256,7 @@ const Header = () => {
         </ul>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

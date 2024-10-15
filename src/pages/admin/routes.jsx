@@ -1,40 +1,36 @@
-import DefaultLayout from 'src/components/layouts/DefaultLayout';
-import React from 'react';
+import DefaultLayout from 'src/components/layouts/DefaultLayout'
+import React from 'react'
 
 const AdminRoutes = () => {
   const LazyReceiptHistory = React.lazy(
-    async () => await import('src/pages/admin/receipt/ReceiptHistoryPage'),
-  );
+    async () => await import('src/pages/admin/receipt/ReceiptHistoryPage')
+  )
 
   const LazyReceiptDetail = React.lazy(
-    async () => await import('src/pages/admin/receipt/ReceiptDetailPage'),
-  );
+    async () => await import('src/pages/admin/receipt/ReceiptDetailPage')
+  )
 
-  const LazyMenu = React.lazy(async () => await import('src/pages/admin/menu/MenuListPage'));
+  const LazyMenu = React.lazy(async () => await import('src/pages/admin/menu/MenuListPage'))
 
-  const LazyMenuDetail = React.lazy(
-    async () => await import('src/pages/admin/menu/MenuDetailPage'),
-  );
+  const LazyMenuDetail = React.lazy(async () => await import('src/pages/admin/menu/MenuDetailPage'))
 
-  const LazyTable = React.lazy(
-    async () => await import('src/pages/admin/table/list/TableListPage'),
-  );
+  const LazyTable = React.lazy(async () => await import('src/pages/admin/table/list/TableListPage'))
 
   const LazyTableDetail = React.lazy(
-    async () => await import('src/pages/admin/table/detail/TableDetailPage'),
-  );
+    async () => await import('src/pages/admin/table/detail/TableDetailPage')
+  )
 
   // const LazyReconcileHistory = React.lazy(async () => await import('src/pages/admin/reconcile/ReconcileHistory.page'));
 
   // const LazyReconcileDetail = React.lazy(async () => await import('src/pages/admin/reconcile/ReconcileDetail.page'));
 
   const LazyUserList = React.lazy(
-    async () => await import('src/pages/admin/user/list/UserListPage'),
-  );
+    async () => await import('src/pages/admin/user/list/UserListPage')
+  )
 
   const LazyUserDetail = React.lazy(
-    async () => await import('src/pages/admin/user/detail/UserDetailPage'),
-  );
+    async () => await import('src/pages/admin/user/detail/UserDetailPage')
+  )
 
   const routes = {
     path: '/admin',
@@ -116,8 +112,8 @@ const AdminRoutes = () => {
         ],
       },
     ],
-  };
+  }
 
-  return routes;
-};
-export default AdminRoutes;
+  return routes
+}
+export default AdminRoutes

@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin')
+const plugin = require('tailwindcss/plugin');
 const rotateX = plugin(function ({ addUtilities }) {
   addUtilities({
     '.rotate-y-180': {
       transform: 'rotateY(180deg)',
     },
-  })
-})
+  });
+});
 module.exports = {
   content: ['.public/**/*.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
@@ -70,7 +70,7 @@ module.exports = {
       },
       boxShadow: {
         '3xl': '0 2px 2px rgb(224 230 237 / 46%), 1px 6px 7px rgb(224 230 237 / 46%)',
-      },
+      }
     },
   },
   plugins: [
@@ -78,8 +78,7 @@ module.exports = {
       strategy: 'class',
     }),
     require('@tailwindcss/typography')({
-      DEFAULT: ({ theme }) => ({
-        // Sử dụng theme ở đây
+      DEFAULT: ({ theme }) => ({ // Sử dụng theme ở đây
         css: {
           '--tw-prose-invert-headings': theme('colors.white.dark'),
           '--tw-prose-invert-links': theme('colors.white.dark'),

@@ -1,5 +1,5 @@
-import configUpdater from './updater'
+import configUpdater from './updater';
 
 export default function* call() {
-  yield configUpdater()
+  yield configUpdater();
 }

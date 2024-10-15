@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react"
 
 const ReceiptDetailPage = () => {
-  return <div>ReceiptDetailPage</div>;
-};
+    return (
+        <div>ReceiptDetailPage</div>
+    )
+}
 
-export default ReceiptDetailPage;
+export default ReceiptDetailPage

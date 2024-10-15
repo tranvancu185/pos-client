@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Error501DarkIMG from 'src/assets/images/error/503-dark.svg';
-import Error501LightIMG from 'src/assets/images/error/503-light.svg';
-import useLayoutStore from 'src/stores/layoutStore';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import Error501DarkIMG from 'src/assets/images/error/503-dark.svg'
+import Error501LightIMG from 'src/assets/images/error/503-light.svg'
+import useLayoutStore from 'src/stores/layoutStore'
 
 const Error503 = () => {
-  const themeConfig = useLayoutStore((state) => state);
-  const { setPageTitle, isDark } = themeConfig;
+  const themeConfig = useLayoutStore((state) => state)
+  const { setPageTitle, isDark } = themeConfig
 
   useEffect(() => {
-    setPageTitle('Error 503');
-  }, [setPageTitle]);
+    setPageTitle('Error 503')
+  }, [setPageTitle])
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
@@ -24,13 +24,14 @@ const Error503 = () => {
           <p className="mt-5 text-base dark:text-white">Service Unavailable!</p>
           <Link
             to="/"
-            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none">
+            className="btn btn-gradient mx-auto !mt-7 w-max border-0 uppercase shadow-none"
+          >
             Home
           </Link>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Error503;
+export default Error503

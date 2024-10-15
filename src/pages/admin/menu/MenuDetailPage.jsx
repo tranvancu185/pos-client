@@ -1,7 +1,10 @@
-import React from 'react';
+import React from "react"
+
 
 const MenuDetailPage = () => {
-  return <div>MenuDetailPage</div>;
-};
+    return (
+        <div>MenuDetailPage</div>
+    )
+}
 
-export default MenuDetailPage;
+export default MenuDetailPage

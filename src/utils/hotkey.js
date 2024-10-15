@@ -62,7 +62,7 @@ const HOTKEY = {
   POS_CANCEL_PAYMENT_CARD: {
     key: 'F5',
     description: '',
-  },
-};
+  }
+}
 
 export default HOTKEY;

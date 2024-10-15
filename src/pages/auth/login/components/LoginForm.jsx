@@ -1,16 +1,16 @@
-import React from 'react';
-import IconUser from 'src/components/icon/IconUser';
-import IconLockDots from 'src/components/icon/IconLockDots';
+import React from 'react'
+import IconUser from 'src/components/icon/IconUser'
+import IconLockDots from 'src/components/icon/IconLockDots'
 
-import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next'
+import { useForm } from 'react-hook-form'
 const LoginForm = ({ submitForm }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm()
   return (
     <form onSubmit={handleSubmit(submitForm)} className="space-y-5 dark:text-white">
       <div>
@@ -46,11 +46,12 @@ const LoginForm = ({ submitForm }) => {
       <div></div>
       <button
         type="submit"
-        className="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]">
+        className="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]"
+      >
         {t('sign_in')}
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

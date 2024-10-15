@@ -1,72 +1,72 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { getUserById } from 'src/apis/user/user';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { getUserById } from 'src/apis/user/user'
+import { useTranslation } from 'react-i18next'
 
-import IconPhone from 'src/components/icon/IconPhone';
-import useLayoutStore from 'src/stores/layoutStore';
-import IconHome from 'src/components/icon/IconHome';
-import IconDollarSignCircle from 'src/components/icon/IconDollarSignCircle';
-import IconUser from 'src/components/icon/IconUser';
-import HomeTab from './components/HomeTab';
-import Loading from 'src/components/common/Loading';
+import IconPhone from 'src/components/icon/IconPhone'
+import useLayoutStore from 'src/stores/layoutStore'
+import IconHome from 'src/components/icon/IconHome'
+import IconDollarSignCircle from 'src/components/icon/IconDollarSignCircle'
+import IconUser from 'src/components/icon/IconUser'
+import HomeTab from './components/HomeTab'
+import Loading from 'src/components/common/Loading'
 
 const TableDetailPage = () => {
-  const { t } = useTranslation();
-  const { id } = useParams();
-  const themeConfig = useLayoutStore((state) => state);
-  const { setPageTitle } = themeConfig;
+  const { t } = useTranslation()
+  const { id } = useParams()
+  const themeConfig = useLayoutStore((state) => state)
+  const { setPageTitle } = themeConfig
 
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState(null)
 
   useEffect(() => {
-    setPageTitle('User Detail - ' + id);
-  }, [setPageTitle, id]);
+    setPageTitle('User Detail - ' + id)
+  }, [setPageTitle, id])
 
-  const [tabs, setTabs] = useState('home');
+  const [tabs, setTabs] = useState('home')
 
   const toggleTabs = (name) => {
-    setTabs(name);
-  };
+    setTabs(name)
+  }
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     if (id) {
       fetchUsers({
         id,
         successCallBack: (response) => {
-          setData(response.data);
-          console.log(response.data);
+          setData(response.data)
+          console.log(response.data)
         },
         errorCallBack: (response) => {
-          console.error('Error:', response);
+          console.error('Error:', response)
         },
-      });
+      })
     }
-  }, [id]);
+  }, [id])
 
   const fetchUsers = async ({ id, successCallBack = false, errorCallBack = false }) => {
     try {
-      const response = await getUserById({ id });
+      const response = await getUserById({ id })
       if (response.status === 200) {
         if (typeof successCallBack === 'function') {
-          successCallBack(response);
+          successCallBack(response)
         }
       } else {
         if (typeof errorCallBack === 'function') {
-          errorCallBack(response);
+          errorCallBack(response)
         }
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error)
       // TODO: handle error here
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   if (loading) {
-    return <Loading />;
+    return <Loading />
   }
 
   return (
@@ -80,7 +80,8 @@ const TableDetailPage = () => {
         <li>
           <Link
             to="/admin/user/list"
-            className="text-primary hover:underline before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
+            className="text-primary hover:underline before:content-['/'] ltr:before:mr-2 rtl:before:ml-2"
+          >
             {t('user_management')}
           </Link>
         </li>
@@ -97,7 +98,8 @@ const TableDetailPage = () => {
             <li className="inline-block">
               <button
                 onClick={() => toggleTabs('home')}
-                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'home' ? '!border-primary text-primary' : ''}`}>
+                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'home' ? '!border-primary text-primary' : ''}`}
+              >
                 <IconHome />
                 {t('home')}
               </button>
@@ -105,7 +107,8 @@ const TableDetailPage = () => {
             <li className="inline-block">
               <button
                 onClick={() => toggleTabs('payment-details')}
-                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'payment-details' ? '!border-primary text-primary' : ''}`}>
+                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'payment-details' ? '!border-primary text-primary' : ''}`}
+              >
                 <IconDollarSignCircle />
                 {t('payment_details')}
               </button>
@@ -113,7 +116,8 @@ const TableDetailPage = () => {
             <li className="inline-block">
               <button
                 onClick={() => toggleTabs('preferences')}
-                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'preferences' ? '!border-primary text-primary' : ''}`}>
+                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'preferences' ? '!border-primary text-primary' : ''}`}
+              >
                 <IconUser className="w-5 h-5" />
                 {t('preferences')}
               </button>
@@ -121,7 +125,8 @@ const TableDetailPage = () => {
             <li className="inline-block">
               <button
                 onClick={() => toggleTabs('danger-zone')}
-                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'danger-zone' ? '!border-primary text-primary' : ''}`}>
+                className={`flex gap-2 p-4 border-b border-transparent hover:border-primary hover:text-primary ${tabs === 'danger-zone' ? '!border-primary text-primary' : ''}`}
+              >
                 <IconPhone />
                 {t('danger_zone')}
               </button>
@@ -131,7 +136,7 @@ const TableDetailPage = () => {
         {tabs === 'home' && <HomeTab profile={data} />}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TableDetailPage;
+export default TableDetailPage

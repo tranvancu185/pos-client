@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import IconSettings from '../../icon/IconSettings';
-import IconX from '../../icon/IconX';
-import IconSun from '../../icon/IconSun';
-import IconMoon from '../../icon/IconMoon';
-import IconLaptop from '../../icon/IconLaptop';
-import useLayoutStore from 'src/stores/layoutStore';
+import { useState } from 'react'
+import IconSettings from '../../icon/IconSettings'
+import IconX from '../../icon/IconX'
+import IconSun from '../../icon/IconSun'
+import IconMoon from '../../icon/IconMoon'
+import IconLaptop from '../../icon/IconLaptop'
+import useLayoutStore from 'src/stores/layoutStore'
 
 const Setting = () => {
-  const themeConfig = useLayoutStore((state) => state);
+  const themeConfig = useLayoutStore((state) => state)
   const {
     toggleAnimation,
     toggleLayout,
@@ -16,24 +16,27 @@ const Setting = () => {
     toggleRTL,
     toggleTheme,
     toggleSemidark,
-  } = themeConfig;
+  } = themeConfig
 
-  const [showCustomizer, setShowCustomizer] = useState(false);
+  const [showCustomizer, setShowCustomizer] = useState(false)
 
   return (
     <div>
       <div
         className={`${(showCustomizer && '!block') || ''} fixed inset-0 bg-[black]/60 z-[51] px-4 hidden transition-[display]`}
-        onClick={() => setShowCustomizer(false)}></div>
+        onClick={() => setShowCustomizer(false)}
+      ></div>
 
       <nav
         className={`${
           (showCustomizer && 'ltr:!right-0 rtl:!left-0') || ''
-        } bg-white fixed ltr:-right-[400px] rtl:-left-[400px] top-0 bottom-0 w-full max-w-[400px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-[right] duration-300 z-[51] dark:bg-black p-4`}>
+        } bg-white fixed ltr:-right-[400px] rtl:-left-[400px] top-0 bottom-0 w-full max-w-[400px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-[right] duration-300 z-[51] dark:bg-black p-4`}
+      >
         <button
           type="button"
           className="bg-primary ltr:rounded-tl-full rtl:rounded-tr-full ltr:rounded-bl-full rtl:rounded-br-full absolute ltr:-left-12 rtl:-right-12 top-0 bottom-0 my-auto w-12 h-10 flex justify-center items-center text-white cursor-pointer"
-          onClick={() => setShowCustomizer(!showCustomizer)}>
+          onClick={() => setShowCustomizer(!showCustomizer)}
+        >
           <IconSettings className="animate-[spin_3s_linear_infinite] w-5 h-5" />
         </button>
 
@@ -42,7 +45,8 @@ const Setting = () => {
             <button
               type="button"
               className="absolute top-0 ltr:right-0 rtl:left-0 opacity-30 hover:opacity-100 dark:text-white"
-              onClick={() => setShowCustomizer(false)}>
+              onClick={() => setShowCustomizer(false)}
+            >
               <IconX className="w-5 h-5" />
             </button>
 
@@ -59,7 +63,8 @@ const Setting = () => {
               <button
                 type="button"
                 className={`${themeConfig.theme === 'light' ? 'btn-primary' : 'btn-outline-primary'} btn`}
-                onClick={() => toggleTheme('light')}>
+                onClick={() => toggleTheme('light')}
+              >
                 <IconSun className="w-5 h-5 shrink-0 ltr:mr-2 rtl:ml-2" />
                 Light
               </button>
@@ -67,7 +72,8 @@ const Setting = () => {
               <button
                 type="button"
                 className={`${themeConfig.theme === 'dark' ? 'btn-primary' : 'btn-outline-primary'} btn`}
-                onClick={() => toggleTheme('dark')}>
+                onClick={() => toggleTheme('dark')}
+              >
                 <IconMoon className="w-5 h-5 shrink-0 ltr:mr-2 rtl:ml-2" />
                 Dark
               </button>
@@ -75,7 +81,8 @@ const Setting = () => {
               <button
                 type="button"
                 className={`${themeConfig.theme === 'system' ? 'btn-primary' : 'btn-outline-primary'} btn`}
-                onClick={() => toggleTheme('system')}>
+                onClick={() => toggleTheme('system')}
+              >
                 <IconLaptop className="w-5 h-5 shrink-0 ltr:mr-2 rtl:ml-2" />
                 System
               </button>
@@ -91,21 +98,24 @@ const Setting = () => {
               <button
                 type="button"
                 className={`${themeConfig.menu === 'horizontal' ? 'btn-primary' : 'btn-outline-primary'} btn`}
-                onClick={() => toggleMenu('horizontal')}>
+                onClick={() => toggleMenu('horizontal')}
+              >
                 Horizontal
               </button>
 
               <button
                 type="button"
                 className={`${themeConfig.menu === 'vertical' ? 'btn-primary' : 'btn-outline-primary'} btn`}
-                onClick={() => toggleMenu('vertical')}>
+                onClick={() => toggleMenu('vertical')}
+              >
                 Vertical
               </button>
 
               <button
                 type="button"
                 className={`${themeConfig.menu === 'collapsible-vertical' ? 'btn-primary' : 'btn-outline-primary'} btn`}
-                onClick={() => toggleMenu('collapsible-vertical')}>
+                onClick={() => toggleMenu('collapsible-vertical')}
+              >
                 Collapsible
               </button>
             </div>
@@ -129,14 +139,16 @@ const Setting = () => {
               <button
                 type="button"
                 className={`${themeConfig.layout === 'boxed-layout' ? 'btn-primary' : 'btn-outline-primary'} btn flex-auto`}
-                onClick={() => toggleLayout('boxed-layout')}>
+                onClick={() => toggleLayout('boxed-layout')}
+              >
                 Box
               </button>
 
               <button
                 type="button"
                 className={`${themeConfig.layout === 'full' ? 'btn-primary' : 'btn-outline-primary'} btn flex-auto`}
-                onClick={() => toggleLayout('full')}>
+                onClick={() => toggleLayout('full')}
+              >
                 Full
               </button>
             </div>
@@ -149,14 +161,16 @@ const Setting = () => {
               <button
                 type="button"
                 className={`${themeConfig.rtlClass === 'ltr' ? 'btn-primary' : 'btn-outline-primary'} btn flex-auto`}
-                onClick={() => toggleRTL('ltr')}>
+                onClick={() => toggleRTL('ltr')}
+              >
                 LTR
               </button>
 
               <button
                 type="button"
                 className={`${themeConfig.rtlClass === 'rtl' ? 'btn-primary' : 'btn-outline-primary'} btn flex-auto`}
-                onClick={() => toggleRTL('rtl')}>
+                onClick={() => toggleRTL('rtl')}
+              >
                 RTL
               </button>
             </div>
@@ -206,7 +220,8 @@ const Setting = () => {
               <select
                 className="form-select border-primary text-primary"
                 value={themeConfig.animation}
-                onChange={(e) => toggleAnimation(e.target.value)}>
+                onChange={(e) => toggleAnimation(e.target.value)}
+              >
                 <option value=" ">None</option>
                 <option value="animate__fadeIn">Fade</option>
                 <option value="animate__fadeInDown">Fade Down</option>
@@ -223,7 +238,7 @@ const Setting = () => {
         </div>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Setting;
+export default Setting

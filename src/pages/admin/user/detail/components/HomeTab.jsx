@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import IconCreditCard from 'src/components/icon/IconCreditCard';
-import IconPencilPaper from 'src/components/icon/IconPencilPaper';
-import IconPhone from 'src/components/icon/IconPhone';
-import IconShoppingBag from 'src/components/icon/IconShoppingBag';
-import IconTag from 'src/components/icon/IconTag';
-import ModalEdit from './ModalEdit';
-import UserDefaultAVT from 'src/assets/images/avatar-default.svg';
+import React, { useState } from 'react'
+import IconCreditCard from 'src/components/icon/IconCreditCard'
+import IconPencilPaper from 'src/components/icon/IconPencilPaper'
+import IconPhone from 'src/components/icon/IconPhone'
+import IconShoppingBag from 'src/components/icon/IconShoppingBag'
+import IconTag from 'src/components/icon/IconTag'
+import ModalEdit from './ModalEdit'
+import UserDefaultAVT from 'src/assets/images/avatar-default.svg'
 
-import { WS_URL } from 'src/web.config';
-import { useTranslation } from 'react-i18next';
+import { WS_URL } from 'src/web.config'
+import { useTranslation } from 'react-i18next'
 
 const HomeTab = ({ profile }) => {
-  const { t } = useTranslation();
-  const [openEditModal, setOpenEditModal] = useState(false);
+  const { t } = useTranslation()
+  const [openEditModal, setOpenEditModal] = useState(false)
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-5">
@@ -21,7 +21,8 @@ const HomeTab = ({ profile }) => {
           <h5 className="font-semibold text-lg dark:text-white-light">{t('profile')}</h5>
           <button
             onClick={() => setOpenEditModal(true)}
-            className="ltr:ml-auto rtl:mr-auto btn btn-primary p-2 rounded-full">
+            className="ltr:ml-auto rtl:mr-auto btn btn-primary p-2 rounded-full"
+          >
             <IconPencilPaper />
           </button>
         </div>
@@ -139,7 +140,7 @@ const HomeTab = ({ profile }) => {
         setOpenEditModal={setOpenEditModal}
       />
     </div>
-  );
-};
+  )
+}
 
-export default HomeTab;
+export default HomeTab

@@ -1,19 +1,19 @@
-import React from 'react';
-import moment from 'moment';
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
+import React from 'react'
+import moment from 'moment'
+import Tippy from '@tippyjs/react'
+import 'tippy.js/dist/tippy.css'
 
-import IconPencil from 'src/components/icon/IconPencil';
-import Status from 'src/components/common/Status';
-import IconTrashLines from 'src/components/icon/IconTrashLines';
-import UserDefaultAVT from 'src/assets/images/avatar-default.svg';
+import IconPencil from 'src/components/icon/IconPencil'
+import Status from 'src/components/common/Status'
+import IconTrashLines from 'src/components/icon/IconTrashLines'
+import UserDefaultAVT from 'src/assets/images/avatar-default.svg'
 
-import { DataTable } from 'mantine-datatable';
-import { useTranslation } from 'react-i18next';
-import { Role } from 'src/components/common/Role';
-import { Link } from 'react-router-dom';
-import { PAGE_SIZES } from 'src/constants/common';
-import { WS_URL } from 'src/web.config';
+import { DataTable } from 'mantine-datatable'
+import { useTranslation } from 'react-i18next'
+import { Role } from 'src/components/common/Role'
+import { Link } from 'react-router-dom'
+import { PAGE_SIZES } from 'src/constants/common'
+import { WS_URL } from 'src/web.config'
 
 export const UserTable = ({
   isLoading = false,
@@ -24,7 +24,7 @@ export const UserTable = ({
   page,
   pageSize,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const columns = [
     {
@@ -92,7 +92,7 @@ export const UserTable = ({
         </ul>
       ),
     },
-  ];
+  ]
 
   return (
     <div className="table-responsive mb-5">
@@ -115,5 +115,5 @@ export const UserTable = ({
         }
       />
     </div>
-  );
-};
+  )
+}

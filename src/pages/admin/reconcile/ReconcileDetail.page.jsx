@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react"
 
 const ReconcileDetailPage = () => {
-  return <div>ReconcileDetailPage</div>;
-};
+    return (
+        <div>ReconcileDetailPage</div>
+    )
+}
 
-export default ReconcileDetailPage;
+export default ReconcileDetailPage

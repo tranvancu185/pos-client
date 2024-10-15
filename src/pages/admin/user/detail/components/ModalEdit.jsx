@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { useTranslation } from 'react-i18next';
+import React, { Fragment } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import { useTranslation } from 'react-i18next'
 
-import IconX from 'src/components/icon/IconX';
+import IconX from 'src/components/icon/IconX'
 
 const ModalEdit = ({ profile, openEditModal, setOpenEditModal }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   return (
     <div>
       <Transition appear show={openEditModal} as={Fragment}>
@@ -17,7 +17,8 @@ const ModalEdit = ({ profile, openEditModal, setOpenEditModal }) => {
             enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0">
+            leaveTo="opacity-0"
+          >
             <div className="fixed inset-0" />
           </Transition.Child>
           <div className="fixed inset-0 z-[999] bg-[black]/60">
@@ -29,14 +30,16 @@ const ModalEdit = ({ profile, openEditModal, setOpenEditModal }) => {
                 enterTo="opacity-100 scale-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95">
+                leaveTo="opacity-0 scale-95"
+              >
                 <Dialog.Panel className="panel my-8 w-full max-w-5xl overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
                   <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
                     <h5 className="text-lg font-bold">{t('edit_user')}</h5>
                     <button
                       onClick={() => setOpenEditModal(false)}
                       type="button"
-                      className="text-white-dark hover:text-dark">
+                      className="text-white-dark hover:text-dark"
+                    >
                       <IconX />
                     </button>
                   </div>
@@ -75,7 +78,8 @@ const ModalEdit = ({ profile, openEditModal, setOpenEditModal }) => {
                             <select
                               defaultValue="United States"
                               id="country"
-                              className="form-select text-white-dark">
+                              className="form-select text-white-dark"
+                            >
                               <option value="All Countries">All Countries</option>
                               <option value="United States">United States</option>
                               <option value="India">India</option>
@@ -125,13 +129,15 @@ const ModalEdit = ({ profile, openEditModal, setOpenEditModal }) => {
                       <button
                         onClick={() => setOpenEditModal(false)}
                         type="button"
-                        className="btn btn-outline-danger">
+                        className="btn btn-outline-danger"
+                      >
                         {t('discard')}
                       </button>
                       <button
                         onClick={() => setOpenEditModal(false)}
                         type="button"
-                        className="btn btn-primary ltr:ml-4 rtl:mr-4">
+                        className="btn btn-primary ltr:ml-4 rtl:mr-4"
+                      >
                         {t('save')}
                       </button>
                     </div>
@@ -143,7 +149,7 @@ const ModalEdit = ({ profile, openEditModal, setOpenEditModal }) => {
         </Dialog>
       </Transition>
     </div>
-  );
-};
+  )
+}
 
-export default ModalEdit;
+export default ModalEdit

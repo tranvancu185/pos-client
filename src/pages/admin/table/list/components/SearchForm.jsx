@@ -1,12 +1,12 @@
-import React from 'react';
-import Select from 'react-select';
-import IconPlus from 'src/components/icon/IconPlus';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { STATUS_OPTIONS } from 'src/constants/status';
-import IconTrashLines from 'src/components/icon/IconTrashLines';
+import React from 'react'
+import Select from 'react-select'
+import IconPlus from 'src/components/icon/IconPlus'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { STATUS_OPTIONS } from 'src/constants/status'
+import IconTrashLines from 'src/components/icon/IconTrashLines'
 export const SearchForm = ({ handleSearchForm, deleteRow }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return (
     <form onSubmit={handleSearchForm}>
@@ -35,5 +35,5 @@ export const SearchForm = ({ handleSearchForm, deleteRow }) => {
         </div>
       </div>
     </form>
-  );
-};
+  )
+}

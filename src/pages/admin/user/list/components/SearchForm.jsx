@@ -1,19 +1,19 @@
-import React from 'react';
-import Select from 'react-select';
-import IconPlus from 'src/components/icon/IconPlus';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { USER_STATUS_OPTIONS } from 'src/constants/status';
-import { useForm, Controller } from 'react-hook-form';
+import React from 'react'
+import Select from 'react-select'
+import IconPlus from 'src/components/icon/IconPlus'
+import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { USER_STATUS_OPTIONS } from 'src/constants/status'
+import { useForm, Controller } from 'react-hook-form'
 
 export const SearchForm = ({ handleSearchForm }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const {
     control,
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm()
 
   return (
     <>
@@ -45,7 +45,7 @@ export const SearchForm = ({ handleSearchForm }) => {
                     return {
                       value: e.value,
                       label: t(e.label),
-                    };
+                    }
                   })}
                 />
               )}
@@ -67,7 +67,7 @@ export const SearchForm = ({ handleSearchForm }) => {
         </form>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SearchForm;
+export default SearchForm

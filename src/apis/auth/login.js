@@ -1,11 +1,11 @@
-import axiosRequest from 'src/utils/request';
+import axiosRequest from "src/utils/request";
 
-const prefix = '/auth/login';
+const prefix = "/auth/login";
 
 export const login = async ({ data }) => {
-  return await axiosRequest({
-    url: `${prefix}`,
-    method: 'POST',
-    data,
-  });
-};
+    return await axiosRequest({
+        url: `${prefix}`,
+        method: 'POST',
+        data
+    })
+}

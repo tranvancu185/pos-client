@@ -1,7 +1,7 @@
-import React from 'react';
-import BlankLayout from 'src/components/layouts/BlankLayout';
-import LoginPage from 'src/pages/auth/login/LoginPage';
-import LogoutPage from './logout/LogoutPage';
+import React from 'react'
+import BlankLayout from 'src/components/layouts/BlankLayout'
+import LoginPage from 'src/pages/auth/login/LoginPage'
+import LogoutPage from './logout/LogoutPage'
 
 const AuthRoutes = () => {
   // const LazyLogin = React.lazy(async () => await import('src/pages/auth/login/LoginPage'));
@@ -21,8 +21,8 @@ const AuthRoutes = () => {
         replace: true,
       },
     ],
-  };
+  }
 
-  return routes;
-};
-export default AuthRoutes;
+  return routes
+}
+export default AuthRoutes

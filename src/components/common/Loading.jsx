@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 // import LoaderLogo from 'src/assets/inside/loader-logo.png';
 const Loading = () => {
@@ -8,7 +8,7 @@ const Loading = () => {
         <span className="animate-ping inline-flex h-full w-full rounded-full bg-info"></span>
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default Loading;
+export default Loading
