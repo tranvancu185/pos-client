@@ -11,7 +11,11 @@ const DashboardPage = () => {
     handleToggleSidebar(true);
   }, [handleToggleSidebar, setPageTitle]);
 
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <div> class</div>
+    </>
+  );
 };
 
 export default DashboardPage;

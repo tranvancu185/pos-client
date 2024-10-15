@@ -54,6 +54,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     show: false,
     backgroundColor: '#FFFFFF',
+    fullscreenable: true,
     autoHideMenuBar: false,
     ...(process.platform === 'linux' ? { icon } : { icon }),
     webPreferences: webPreferences,
@@ -209,7 +210,7 @@ function createWindow() {
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
-    return { action: 'deny' };
+    return { action: 'allow' };
   });
 }
 
