@@ -47,6 +47,7 @@ const LoginPage = () => {
     } catch (error) {
       console.error('Error:', error);
       // TODO: handle error here
+      errorCallBack(error);
     }
   };
 
